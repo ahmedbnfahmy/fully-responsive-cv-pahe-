@@ -1,0 +1,208 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: grid;
+    grid-template-rows: repeat(5);
+    grid-gap: 0;
+    margin: 0 20px;
+}
+
+$ff: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+@mixin display {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    padding: 0 10px;
+    margin: 0 20px;
+    width: 100%;
+}
+
+header {
+    @include display;
+    // grid-template-rows: repeat(4, 20vh auto auto auto);
+
+    img {
+        width: 70px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    p {
+        font: 15px bold;
+        font-family: $ff
+    }
+}
+
+@mixin head1 {
+    width: 100%;
+    font-size: 25px;
+    text-align: center;
+}
+
+.U-sec {
+    @include display;
+    grid-template-rows: repeat(2);
+
+    .sub-sec {
+        @include display;
+        background-color: rgb(240, 232, 232);
+        grid-template-columns: repeat(7, 13%);
+        padding: 0 40px;
+    }
+
+    h1 {
+        @include head1;
+        background-color: rgb(0, 140, 255);
+    }
+
+    p,
+    h2 {
+        font: 15px bold;
+        font-family: $ff;
+    }
+
+    span {
+        color: rgb(195, 0, 255);
+        align-self: flex-end;
+        font-size: large
+    }
+}
+
+.M-sec {
+    @include display;
+    grid-template-rows: repeat(2);
+
+    h1 {
+        @include head1;
+        background-color: rgb(255, 0, 64);
+    }
+
+    .M-sub-sec {
+        @include display;
+        grid-template-columns: repeat(3, 30%);
+        grid-gap: 2%;
+        background-color: rgb(240, 232, 232);
+    }
+
+    p {
+        font: 15px bold;
+        font-family: $ff;
+    }
+}
+
+.B-sec {
+    @extend .U-sec;
+
+    h1 {
+        background-color: rgb(51, 255, 0);
+
+    }
+
+    .b-sub-sec {
+        @include display;
+        background-color: rgb(240, 232, 232);
+        grid-template-columns: repeat(4, 25%);
+    }
+}
+
+footer {
+    display: grid;
+    grid-template-rows: repeat(4);
+    background-color: rgb(71, 44, 85);
+    width: 100%;
+
+    .f-sub-sec {
+        @include display;
+        grid-template-columns: repeat(4, 25%);
+        color: aliceblue;
+        margin: 0 0;
+    }
+
+    p,
+    h2 {
+        font: 15px bold;
+        font-family: $ff;
+    }
+
+}
+
+// ----------------------------------------------------------
+@media only screen and (max-width: 768px) {
+    header {
+        img {
+            width: 100%;
+            content: url("./media/profile\ picture.png");
+        }
+    }
+
+    p {
+        border: 1px solid rgb(228, 143, 143);
+        background-color: burlywood;
+        padding: 3px;
+    }
+
+    .U-sec {
+
+        .sub-sec {
+            grid-template-columns: repeat(2, 50%);
+        }
+    }
+
+    .M-sec {
+
+        .M-sub-sec {
+            grid-template-columns: repeat(1, 100%);
+        }
+    }
+
+    .B-sec {
+
+        .b-sub-sec {
+            grid-template-columns: repeat(2, 50%);
+        }
+    }
+
+    footer {
+
+        .f-sub-sec {
+            grid-template-columns: repeat(2, 50%);
+        }
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    .U-sec {
+        .sub-sec {
+            grid-template-columns: repeat(1, 100%);
+        }
+    }
+
+
+    .M-sec {
+
+        .M-sub-sec {
+            grid-template-columns: repeat(1, 100%);
+        }
+    }
+
+    .B-sec {
+
+        .b-sub-sec {
+            grid-template-columns: repeat(1, 100%);
+        }
+    }
+
+    footer {
+        .f-sub-sec {
+            grid-template-columns: repeat(1, 100%);
+        }
+    }
+
+}
